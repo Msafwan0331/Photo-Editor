@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PixelForge Pro</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1 class="main-title">PixelForge Pro</h1>
+    <div class="tool-grid">
+      <div class="tool-card" onclick="showSection('pdf')">
+        <i class="fas fa-file-pdf card-icon"></i>
+        <h2>PDF Studio</h2>
+        <p>Transform documents into perfect PDFs</p>
+      </div>
+      <div class="tool-card" onclick="showSection('image')">
+        <i class="fas fa-wand-magic-sparkles card-icon"></i>
+        <h2>Image Forge</h2>
+        <p>Enhance & transform your images</p>
+      </div>
+    </div>
+
+    <!-- PDF Section -->
+    <div id="pdf-section" class="hidden-section">
+      <h2>PDF Converter</h2>
+      <input type="file" id="pdfFileInput" accept="image/*" multiple hidden />
+      <label for="pdfFileInput" class="file-btn"><i class="fas fa-image"></i> Select Images</label>
+      <button class="convert-btn" onclick="convertHandler()">
+        Convert to PDF <i class="fas fa-magic"></i>
+      </button>
+    </div>
+
+    <!-- Image Enhancer Section -->
+    <div id="image-section" class="hidden-section">
+      <h2>Image Enhancer</h2>
+      <input type="file" id="imageUpload" accept="image/*" hidden />
+      <label for="imageUpload" class="upload-btn">
+        <i class="fas fa-cloud-upload-alt"></i> Upload Image
+      </label>
+      <canvas id="previewCanvas"></canvas>
+
+      <div class="controls">
+        <div class="filter-control"><label>Brightness</label><input type="range" id="brightness" min="0" max="200" value="100"></div>
+        <div class="filter-control"><label>Contrast</label><input type="range" id="contrast" min="0" max="200" value="100"></div>
+        <div class="filter-control"><label>Saturation</label><input type="range" id="saturation" min="0" max="200" value="100"></div>
+        <div class="filter-control"><label>Hue Rotate</label><input type="range" id="hue" min="0" max="360" value="0"></div>
+        <div class="filter-control"><label>Grayscale</label><input type="range" id="grayscale" min="0" max="100" value="0"></div>
+        <div class="filter-control"><label>Sepia</label><input type="range" id="sepia" min="0" max="100" value="0"></div>
+        <div class="filter-control"><label>Invert</label><input type="range" id="invert" min="0" max="100" value="0"></div>
+        <div class="filter-control"><label>Blur</label><input type="range" id="blur" min="0" max="10" value="0"></div>
+        <div class="filter-control"><label>Opacity</label><input type="range" id="opacity" min="0" max="100" value="100"></div>
+        <div class="filter-control"><label>Sharpness</label><input type="range" id="sharpness" min="0" max="5" value="0"></div>
+      </div>
+      <button class="convert-btn" onclick="autoEnhance()">Auto Enhance</button>
+      <button class="save-btn" onclick="saveImage()">Save Image <i class="fas fa-download"></i></button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
